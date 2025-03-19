@@ -16,17 +16,17 @@ images.forEach((image) => {
 // Get the <span> element that closes the modal
 const closeButton = document.getElementsByClassName("close")[0];
 
-closeButton.onclick = function() {
+closeButton.onclick = function () {
     modal.style.display = "none";
     movieIframe.src = ""
-  }
+}
 
 // When the user clicks on the button, open the modal
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
-  }
+}
 
 
 //slideshow
@@ -65,3 +65,39 @@ function showSlides(n) {
     }
 }
 
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3, // Tampilkan 3 film dalam 1 tampilan
+    spaceBetween: 20, // Jarak antar film
+    loop: true, // Looping
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1, // 1 film di layar kecil
+        },
+        768: {
+            slidesPerView: 2, // 2 film di tablet
+        },
+        1024: {
+            slidesPerView: 3, // 3 film di layar besar
+        }
+    }
+});
+
+const burger = document.getElementById("burger");
+const navMenu = document.querySelector(".nav-menu");
+
+// Add click event to the burger
+burger.addEventListener("click", function () {
+    navMenu.classList.toggle("active"); // Toggle the active class
+});
